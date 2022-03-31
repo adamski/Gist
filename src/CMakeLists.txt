@@ -23,4 +23,8 @@ add_library (
 
 source_group (Source src)
 
-target_compile_definitions (Gist PUBLIC -DUSE_KISS_FFT)
+if(APPLE)
+    target_compile_definitions(Gist PUBLIC -DUSE_ACCELERATE_FFT)
+else()
+    target_compile_definitions(Gist PUBLIC -DUSE_KISS_FFT)
+endif()
